@@ -1,28 +1,126 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body{
+  background:  #eeeeee;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h1 {
+  color: black;
+  font-size: 44px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+h2{
+  font-size: 24px;
+  margin: 15px 0px;
+  text-shadow: 1px 1px 5px black;
+}
+
+
+.app-container > div {
+  
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.movieSummary {
+  text-shadow: 1px 1px 2px black;
+}
+
+
+.movie-displayer {
+  width: 300px;
+  background: red;
+  padding: 10px;
+  border-radius: 15px;
   color: white;
+  box-shadow: 5px 5px 15px black;
+  animation: drop-in 1 1s forwards ease-in-out;
+
 }
 
-.App-title {
-  font-size: 1.5em;
+.left-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
-.App-intro {
-  font-size: large;
+.right-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.movie-displayer img {
+  width: 100%;
 }
+
+@keyframes drop-in {
+  0% {
+    transform: translate(-500px, 0px);
+    display: none;
+  }
+
+  100% {
+    transform: translate( 0px, 0px);
+    display:initial;
+  }
+}
+
+
+
+.movie-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-display > * + * , .movie-display > ul:first-child {
+  margin: 10px;
+  
+}
+
+.filter-styles {
+  display: block;
+}
+
+.input-periphs {
+  border: white 3px solid;
+  box-shadow: 5px 5px 10px black;
+}
+
+select {
+  background-color: red; 
+  width: 300px;
+  color: white;
+  font-size: 24px;
+  display: inline-block;
+}
+
+
+
+.btn {
+  background-color: red; 
+  color: white;
+  padding: 15px;
+  font-size: 24px;
+  display: inline-block;
+  margin: 10px; 
+  width: 140px;
+  
+}
+
+.go {
+  
+}
+
+.next {
+
+}
+
+
+
