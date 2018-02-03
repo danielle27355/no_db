@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const cp = require('./controller/controller-profile')
+const wl = require('./controller/controller-watchList')
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors());
 
 const baseURLforGenre = '/api/moviesGenre/'
 const baseURLforReviews ='/api/moviesReview'
+const watchListUrl = '/api/watchList'
 
 var genre = [];
 
@@ -26,6 +28,10 @@ app.post(baseURLforReviews, cp.create);
 app.get(baseURLforReviews, cp.read);
 app.put(baseURLforReviews, cp.update);
 app.delete(baseURLforReviews, cp.delete);
+
+app.post(watchListUrl, wl.create);
+app.get(watchListUrl, wl.read);
+app.delete(watchListUrl, wl.delete);
 
 
 // app.get(baseURL, (req, res) => {

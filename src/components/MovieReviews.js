@@ -10,9 +10,14 @@ class MovieReviews extends Component {
     }
     render(){
         return(
-            <div>
-                <p>display review</p>
-                <textarea placeholder='write your review here'></textarea>
+            <div className="movie-displayer">
+                <div className='reviewBox'>
+                    <div>
+                        <h2>My Reviews</h2>
+                        <p>{this.props.myReview}</p>
+                        <textarea className='textbox-for-review' placeholder='write your review here'></textarea>
+                    </div>
+                </div>
             </div>
         )
     }

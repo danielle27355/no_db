@@ -5,7 +5,7 @@ var moviesWithReviews = [{
 
 module.exports = {
     create: (req, res) => {
-        const {title, img_url, review} = req.body;
+        const {title, review} = req.body;
 
         moviesWithReviews.push({title: title, review})
 

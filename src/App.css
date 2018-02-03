@@ -33,7 +33,7 @@ h2{
 
 
 .movie-displayer {
-  width: 300px;
+  width: 255px;
   background: red;
   padding: 10px;
   border-radius: 15px;
@@ -47,6 +47,10 @@ h2{
   position: fixed;
   left: 0;
   top: 0;
+}
+
+.leftbar {
+  display: flex;
 }
 
 .right-sidebar {
@@ -88,6 +92,10 @@ h2{
   display: block;
 }
 
+.filter-menu {
+  margin-top: 20px;
+}
+
 .input-periphs {
   border: white 3px solid;
   box-shadow: 5px 5px 10px black;
@@ -95,7 +103,7 @@ h2{
 
 select {
   background-color: red; 
-  width: 300px;
+  width: 100%;
   color: white;
   font-size: 24px;
   display: inline-block;
@@ -106,12 +114,38 @@ select {
 .btn {
   background-color: red; 
   color: white;
-  padding: 15px;
-  font-size: 24px;
+  padding: 5px;
+  font-size: 20px;
   display: inline-block;
   margin: 10px; 
   width: 140px;
   
+}
+
+.getReviewButton {
+  background-color: red; 
+  color: white;
+  font-size: 14px;
+  display: inline-block;
+  margin: 10px; 
+  width: 140px;
+}
+
+
+.textbox-for-review {
+
+  border: 3px white solid;
+  background-color: white;
+  color: white;
+  width: 100%;
+  min-height: 100px;
+
+}
+
+.textbox-for-review::placeholder {
+  color: red;
+  font-size: 14px;
+  text-align: center;
 }
 
 .go {
@@ -122,5 +156,30 @@ select {
 
 }
 
+.watchList {
+  margin-top: 20px;
+}
 
+.watchList ul {
+  border: solid white 3px;
+
+}
+
+.watchList li {
+  margin: 5px 0px;
+}
+
+.watchList * + *{
+  margin: 10px 5px;
+}
+
+.watchList button {
+  
+  background-color: red; 
+  color: white;
+  font-size: 14px;
+  display: inline-block;
+  border: white 2px solid;
+  box-shadow: 5px 5px 10px black;
+}
 
