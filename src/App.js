@@ -124,19 +124,24 @@ class App extends Component {
     }
 
     getReview(selectedMovie){
-      var reviewURL = `http://localhost:4000/api/moviesReview?name=${selectedMovie}`;
+      var reviewURL = `http://localhost:4000/api/watchList?name=${selectedMovie}`;
         
-      axios.get(reviewURL).then(response => {  
-          if(response.data.review){    
+      axios.get(reviewURL).then(response => {
+          console.log(selectedMovie)
+          
+          var theMovie = response.data.filter(movie => movie.title == selectedMovie)
+
+          console.log(theMovie[0].review)
+          if(theMovie[0].review){    
           this.setState({
-                  review: response.data.review
-              
+                  review: theMovie[0].review 
           }) 
           } else {
               this.setState({ 
                   review: "You haven't reviewed this movie, you should write a review!"
               })
           }
+          console.log(this.state.review)
       })
     }
     

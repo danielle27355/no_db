@@ -158,6 +158,8 @@ select {
 
 .watchList {
   margin-top: 20px;
+  overflow: auto;
+  max-height: 500px;
 }
 
 .watchList ul {
