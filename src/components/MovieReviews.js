@@ -6,16 +6,21 @@ class MovieReviews extends Component {
         super(props)
         this.state = {
             review: '',
+            
         }
     }
+
+    
+
     render(){
         return(
             <div className="movie-displayer">
                 <div className='reviewBox'>
                     <div>
-                        <h2>My Reviews</h2>
+                        <h2>My Reviews:</h2>
+                        <h3 className='reviewed'>{this.props.myMovie}</h3>
                         <p>{this.props.myReview}</p>
-                        <textarea className='textbox-for-review' placeholder='write your review here'></textarea>
+                        
                     </div>
                 </div>
             </div>

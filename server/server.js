@@ -13,6 +13,7 @@ app.use(cors());
 const baseURLforGenre = '/api/moviesGenre/'
 // const baseURLforReviews ='/api/moviesReview'
 const watchListUrl = '/api/watchList'
+const reviewedUrl = '/api/reviewed'
 
 var genre = [];
 
@@ -31,8 +32,10 @@ app.get(baseURLforGenre, (req, res) => {
 
 app.post(watchListUrl, wl.create);
 app.get(watchListUrl, wl.read);
-app.put(watchListUrl, wl.read);
 app.delete(watchListUrl, wl.delete);
+app.put(watchListUrl, wl.update);
+
+// app.post(reviewedUrl, wl)
 
 
 // app.get(baseURL, (req, res) => {

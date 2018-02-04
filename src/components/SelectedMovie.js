@@ -14,7 +14,7 @@ class SelectedMovie extends Component {
         return(
             <ul className="movie-displayer">
                 <li className='movieTitle'><h2>{this.props.myMovie}</h2></li>
-                <img className='poster' src={pick} alt={loader}/>
+                <img className='poster selectedPoster' src={pick} alt={loader}/>
                 <button className='getReviewButton input-periphs' onClick={() => this.props.addMovie(this.props.myMovie)}>Add to Watchlist</button>  
             </ul>
         )

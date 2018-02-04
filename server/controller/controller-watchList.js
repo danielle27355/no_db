@@ -1,27 +1,25 @@
-var watchList = [
-    {title: 'Jumanji', review:'This movie was Great!'},
-    {title: 'John Wick', review:'This movie was just ok!'},
-    {title: 'Blade Runner 2049', review: 'This movie was incredible'}
-];
+var totalList = [];
+var watchList = [];
 
 module.exports = {
     create: (req, res) => {
-        const {title} = req.body;
-
-        watchList.push({title: title})
-
+        const {title, review} = req.body;
+        watchList.push({title: title, review: review})
         res.status(200).send(watchList)
     },
     read: (req, res) => {
         res.status(200).send(watchList)
     },
     update: (req, res) => {
+        let review;
+        if(req.query.text){
+            review = req.query.text;
+        }
         const movieName = req.query.name;
         let index = watchList.findIndex(movie => movie.title == movieName);
-
         watchList[index] = {
-            title: watchList[index].name,
-            review: req.body.review || req[index].review
+            title: movieName,
+            review: review
         }
         res.status(200).send(watchList)
     },

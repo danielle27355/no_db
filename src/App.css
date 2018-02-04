@@ -16,7 +16,7 @@ h1 {
 
 h2{
   font-size: 24px;
-  margin: 15px 0px;
+  margin: 5px 0px;
   text-shadow: 1px 1px 5px black;
 }
 
@@ -33,7 +33,7 @@ h2{
 
 
 .movie-displayer {
-  width: 255px;
+  width: 235px;
   background: red;
   padding: 10px;
   border-radius: 15px;
@@ -57,6 +57,10 @@ h2{
   position: fixed;
   right: 0;
   top: 0;
+}
+
+.right-sidebar > * + * {
+  margin: 20px 0px;
 }
 
 .movie-displayer img {
@@ -109,7 +113,9 @@ select {
   display: inline-block;
 }
 
-
+.poster.selectedPoster{
+  width: 100px;
+}
 
 .btn {
   background-color: red; 
@@ -136,9 +142,9 @@ select {
 
   border: 3px white solid;
   background-color: white;
-  color: white;
+  color: red;
   width: 100%;
-  min-height: 100px;
+  min-height: 50px;
 
 }
 
@@ -157,7 +163,6 @@ select {
 }
 
 .watchList {
-  margin-top: 20px;
   overflow: auto;
   max-height: 500px;
 }
@@ -185,3 +190,9 @@ select {
   box-shadow: 5px 5px 10px black;
 }
 
+.reviewed {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: gainsboro;
+  text-shadow: 2px 2px 5px black;
+} 
