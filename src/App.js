@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
         movieData: '',
         id: '',
-        page: 1,
+        page: 0,
         mySelectedMovie: 'Select a movie',
         myPosterPath: '',
         myMovieOverView: '',
@@ -37,12 +37,12 @@ class App extends Component {
     this.getMovieEndYear = this.getMovieEndYear.bind(this);
 } 
   componentDidMount(){
-    var num = this.state.page;
+    var num = this.state.page + 1;
     var initalDisplayURL = `https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`;
     axios.get(initalDisplayURL).then(response => {  
     this.setState({
             movieData: response.data.results,
-            page: this.state.page + 1
+            page: num
         })
     })
     axios.get('http://localhost:4000/api/watchList').then(response => {
@@ -120,7 +120,7 @@ class App extends Component {
             })
         }
        
-       console.log(this.state.page)
+       
        
        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
            this.setState({
@@ -129,13 +129,13 @@ class App extends Component {
            })
        
        })
-        
+       console.log(this.state.page)
    }
 
    prevPage(){
     var num = this.state.page - 1;
     if(num > 0){
-    console.log(this.state.page)
+    
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
         
         this.setState({
@@ -143,7 +143,8 @@ class App extends Component {
             page: num
         })
     
-    })}   
+    })}
+    console.log(this.state.page)   
   } 
     addToWatchList(movie){
       axios.post(`http://localhost:4000/api/watchList`, { title: movie}).then(response => {
