@@ -42,16 +42,6 @@ class WatchList extends Component {
         })
   
       }
-    
-
-    // removeItem(movie){
-    //     axios.delete(`http://localhost:4000/api/watchList?name=${movie}`).then(response =>
-    //         this.setState({
-    //             watchList: response.data
-    //         })
-    //     )
-
-    // }
 
         render(){
 

@@ -54,7 +54,7 @@ class App extends Component {
           myMovieOverView: overview,
         })
 
-    var reviewURL = `http://localhost:4000/api/watchList?name=${selected}`;
+    var reviewURL = `http://localhost:4000/api/reviewed?name=${selected}`;
         
       axios.get(reviewURL).then(response => {
           
@@ -95,9 +95,7 @@ class App extends Component {
    }
 
    nextPage(){
-       this.setState({
-           page: this.state.page + 1
-       })
+       
        console.log(this.state.page)
        var num = this.state.page;
        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}`).then(response => {
@@ -105,7 +103,10 @@ class App extends Component {
                movieData: response.data.results,
            })
        
-       })   
+       })
+       this.setState({
+        page: this.state.page + 1
+        })   
    }
 
    prevPage(){
@@ -147,9 +148,9 @@ class App extends Component {
 
     writeReview(review){
 
-        var reviewURL = `http://localhost:4000/api/watchList?name=${this.state.mySelectedMovie}&text=${review}`;
+        var reviewURL = `http://localhost:4000/api/reviewed?name=${this.state.mySelectedMovie}&text=${review}`;
         
-        var getURL = `http://localhost:4000/api/watchList?name=${this.state.mySelectedMovie}`;
+        var getURL = `http://localhost:4000/api/reviewed?name=${this.state.mySelectedMovie}`;
         
       axios.get(getURL).then(response => {
         var theMovie = response.data.filter(movie => movie.title == this.state.mySelectedMovie)
@@ -180,30 +181,6 @@ class App extends Component {
       })
     }
 
-        
-    
-    
-
-        // axios.post(reviewURL).then(response => {
-        //     console.log(selected)
-            
-        //     var theMovie = response.data.filter(movie => movie.title == selected)
-  
-        //     console.log(theMovie)
-        //     if(theMovie.length != 0){    
-        //     this.setState({
-        //             review: theMovie[0].review 
-        //     }) 
-        //     } else {
-        //         this.setState({ 
-        //             review: "You haven't reviewed this movie, you should write a review!"
-        //         })
-        //     }
-        //     console.log(this.state.review)
-        // })
-        
-
-   
   
   render() {
 

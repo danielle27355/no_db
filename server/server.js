@@ -25,17 +25,15 @@ app.get(baseURLforGenre, (req, res) => {
 })
 
 
-// app.post(baseURLforReviews, cp.create);
-// app.get(baseURLforReviews, cp.read);
-// app.put(baseURLforReviews, cp.update);
-// app.delete(baseURLforReviews, cp.delete);
+app.post(reviewedUrl, wl.create);
+app.get(reviewedUrl, wl.read);
+app.delete(reviewedUrl, wl.delete);
+app.put(reviewedUrl, wl.update);
 
-app.post(watchListUrl, wl.create);
-app.get(watchListUrl, wl.read);
+app.post(watchListUrl, wl.addToWatchList);
+app.get(watchListUrl, wl.readFromWatchList);
 app.delete(watchListUrl, wl.delete);
-app.put(watchListUrl, wl.update);
 
-// app.post(reviewedUrl, wl)
 
 
 // app.get(baseURL, (req, res) => {
