@@ -6,7 +6,6 @@ class ReviewAndUpdate extends Component {
         super(props)
         this.state = {
             newReview: ''
-
         }
     }
 

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Rambla');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 * {
   box-sizing: border-box;
 }
@@ -9,6 +12,7 @@ body{
   background-repeat: none;
   background-size: cover;
   text-align: center;
+  font-family:'Rambla', sans-serif;
 }
 
 
@@ -26,23 +30,29 @@ body{
 h1 {
   color: white;
   font-size: 44px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   text-shadow: 2px 2px 8px black;
   white-space: nowrap;
   
 }
 
+.pageTitle div:nth-child(2){
+  position: relative;
+  right: -914px;
+  top: -47px;
+}
+
 .pageTitle div:nth-child(3){
   position: relative;
-  right: -714px;
-  top: -44px;
+  right: -1814px;
+  top: -94px;
 }
 
 .banner {
   margin: 0px 40px;
   display: inline-block;
   white-space: nowrap;
-  animation: banner 3s infinite forwards linear;
+  animation: banner 4s infinite forwards linear;
   border:
 }
 
@@ -52,7 +62,7 @@ h1 {
     transform: translate(0px, 0px);
   }
   100%{
-    transform: translate(-476px, 0px);
+    transform: translate(-912px, 0px);
   }
 }
 

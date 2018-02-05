@@ -26,7 +26,6 @@ class App extends Component {
         yearsGreaterThan: '1900'
     }
     this.changeHandler = this.changeHandler.bind(this);
-    // this.getReview = this.getReview.bind(this);
     this.getMovieByGenre = this.getMovieByGenre.bind(this)
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
@@ -36,6 +35,8 @@ class App extends Component {
     this.getMovieStartYear = this.getMovieStartYear.bind(this);
     this.getMovieEndYear = this.getMovieEndYear.bind(this);
 } 
+
+//Setting initial parameters in app
   componentDidMount(){
     var num = this.state.page + 1;
     var initalDisplayURL = `https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`;
@@ -45,12 +46,15 @@ class App extends Component {
             page: num
         })
     })
+
+    //Grabbing watchlist from the server
     axios.get('http://localhost:4000/api/watchList').then(response => {
             this.setState({
               watchList: response.data
             })
         })
   }
+  //setting which movies the user has seleced and then displaying thier review if applicable, this is passed to the MovieDisplay Component to allow for updating state in app.js with movies selected in child compoonent
     changeHandler(selected, poster, overview){
         this.setState({
           mySelectedMovie: selected,
@@ -65,7 +69,7 @@ class App extends Component {
           
           var theMovie = response.data.filter(movie => movie.title == selected)
 
-          
+          //checking if there is a review already in place
           if(theMovie.length != 0){    
           this.setState({
                   review: theMovie[0].review 
@@ -79,19 +83,22 @@ class App extends Component {
       })
     }
 
+    //getting genre
     getMovieByGenre(genre){
       this.setState({
           id: genre,
           page: 1
       })
     }
+
+    //passed to GenreFilter component to gather year to filter
     getMovieStartYear(greaterThan){
         this.setState({
             yearsGreaterThan: greaterThan,
         })
         console.log(this.state.yearsGreaterThan);
     }
-
+    //passed to GenreFilter component to gather year to filter
     getMovieEndYear(lessThan){
         this.setState({
             yearsLessThan: lessThan,
@@ -233,7 +240,6 @@ class App extends Component {
                 </div>
             </div>
             <div className='left-sidebar'>
-              {/* <SelectedMovie myMovie={this.state.mySelectedMovie} myPoster={this.state.myPosterPath} addMovie={this.addToWatchList}/> */}
               <div className='filter-menu movie-displayer'>
                   <GenreFilter gettingGenre={this.getMovieByGenre} startYear={this.getMovieStartYear} endYear={this.getMovieEndYear}/>
                   <button className='btn go input-periphs' onClick={() => this.goButton()}>Go</button>
