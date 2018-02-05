@@ -258,16 +258,17 @@ select {
 .textbox-for-review {
 
   border: 3px white solid;
-  background-color: white;
-  color: red;
+  background-color: red;
+  color: white;
   width: 100%;
   min-height: 50px;
   font-size: 14px;
   font-weight: 700;
+  border-radius: 3px;
 }
 
 .textbox-for-review::placeholder {
-  color: red;
+  color: white;
   font-size: 14px;
   text-align: center;
 }
@@ -321,6 +322,7 @@ select {
 .review {
   margin: 25px 0px;
   font-size: 18px;
+  
 }
 
 
@@ -352,12 +354,31 @@ select {
 
 }
 
-
-
 .weatherTile img {
   width: 100px;
 }
 
 .temp {
   font-size: 40px;
+}
+
+.weatherDescription {
+  margin-bottom: 15px;
+}
+
+.weatherZip{
+  width: 100%;
+  border-radius: 3px;
+  border: 3px white solid;
+  background-color: red;
+  color: white;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.weatherZip::placeholder {
+  color: white;
+  font-size: 14px;
+  text-align: center;
 }

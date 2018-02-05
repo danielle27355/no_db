@@ -59,7 +59,7 @@ class ShouldIWatch extends Component {
                 <p className='temp'>{this.state.temperature}&#8457;</p>
                 <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`}/>
                 <p className='weatherDescription'>{`Hmmm... ${this.state.weather} outside, you should propbably just stay in and watch a movie`}</p>
-                <input className='input-periphs' onChange={(e) => this.setState({zipCode: e.target.value})}/>
+                <input className='input-periphs weatherZip' onChange={(e) => this.setState({zipCode: e.target.value})} placeholder='Enter Zip Code'/>
                 <button onClick={() => this.updateZip(this.state.zipCode)} className='btn input-periphs'>Submit</button>
             </div>
         )

@@ -17,7 +17,7 @@ class App extends Component {
         movieData: '',
         id: '',
         page: 1,
-        mySelectedMovie: '',
+        mySelectedMovie: 'Select a movie',
         myPosterPath: '',
         myMovieOverView: '',
         review: '',
@@ -113,13 +113,19 @@ class App extends Component {
    }
 
    nextPage(){
+    var num = this.state.page + 1;
+        if(num === 0){
+            this.setState({
+                page: 1
+            })
+        }
        
        console.log(this.state.page)
-       var num = this.state.page;
+       
        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
            this.setState({
                movieData: response.data.results,
-               page: num + 1
+               page: num
            })
        
        })
@@ -127,16 +133,14 @@ class App extends Component {
    }
 
    prevPage(){
-    var num = this.state.page;
-    if(this.state.page > 0){this.setState({
-        page: this.state.page - 1
-    })
+    var num = this.state.page - 1;
+    if(num > 0){
     console.log(this.state.page)
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
         
         this.setState({
             movieData: response.data.results,
-            page: num - 1,
+            page: num
         })
     
     })}   
