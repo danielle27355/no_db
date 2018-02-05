@@ -10,6 +10,7 @@ import GenreFilter from './components/GenreFilter';
 import ReviewAndUpdate from './components/ReviewAndUpdate'
 import ShouldIWatch from './components/ShouldIWatch'
 
+
 class App extends Component {
   constructor(props){
     super(props)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
 class MovieReviews extends Component {
     constructor(props){
         super(props)
@@ -13,6 +14,9 @@ class MovieReviews extends Component {
     
 
     render(){
+
+        
+
         return(
             <div className="movie-displayer">
                 <div className='reviewBox'>

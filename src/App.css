@@ -19,12 +19,14 @@ body{
 
 .pageTitle {
   padding: 10px;
-  margin: 10px 0px;
+  margin: 95px auto 10px;
   background: red;
   height: 70px;
+  width: 800px;
   overflow: hidden;
   border: 3px white solid;
   border-radius: 5px;
+ 
 }
 
 h1 {
@@ -391,4 +393,26 @@ select {
   color: white;
   font-size: 14px;
   text-align: center;
+}
+
+.coolGif {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  margin: 0 auto;
+  left: 0;
+  animation: walking 5s infinite forwards linear
+}
+
+@keyframes walking {
+  0% {
+    transform: translate(0px, 0px)
+  }
+  50% {
+    transform: translate(-400px, 0px)
+  }
+  100% {
+    transform: translate(0px, 0px)
+  }
 }
