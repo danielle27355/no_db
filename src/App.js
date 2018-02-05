@@ -203,7 +203,7 @@ class App extends Component {
             <MovieDisplay movieInfo={this.state.movieData} movieSelector={this.changeHandler}/>
             <div className='right-sidebar'>
               <MovieReviews myReview={this.state.review} edit={this.updateReview} myMovie={this.state.mySelectedMovie} />
-              <ReviewAndUpdate addAndUpdate={this.writeReview}/>
+              <ReviewAndUpdate addAndUpdate={this.writeReview} myReview={this.state.review}/>
               <div className='watchList movie-displayer'>
                     <h2>My Watch List:</h2>
                     {watchList}

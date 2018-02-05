@@ -4,7 +4,7 @@ const Header = () => {
 
     return(
         <div>
-            <h1 className='pageTitle'>Movie Sorter</h1>
+            <h1 className='pageTitle'>Show Me Your Movies!</h1>
         </div>
         )
 }

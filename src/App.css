@@ -3,15 +3,19 @@
 }
 
 body{
-  background:  #eeeeee;
+  background: linear-gradient(rgba(42, 26, 56, 0.65), rgba(42, 26, 56, 0.65)), url('./background.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: none;
+  background-size: cover;
   text-align: center;
 }
 
 h1 {
-  color: black;
+  color: white;
   font-size: 44px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
+  text-shadow: 2px 2px 8px black;
 }
 
 h2{
@@ -32,21 +36,65 @@ h2{
 }
 
 .movie-displayer {
-  width: 235px;
-  background: red;
+  width: 250px;
+  background: #0F1116;
   padding: 10px;
   border-radius: 15px;
   color: white;
-  box-shadow: 5px 5px 15px black;
-  animation: drop-in 1 1s forwards ease-in-out;
+  border: 3px solid #0F1116;
+  box-shadow: 5px 5px 15px rgb(0, 0, 0);
+  
 
+}
+.movie-displayer:hover {
+  animation: bordercolor infinite 1s forwards linear;
+  box-shadow: 0px 0px 10px white;
+}
+
+@keyframes bordercolor {
+
+  0% {
+    border-top-color: green;
+    border-right-color: yellow;
+    border-bottom-color: blue;
+    border-left-color: red;
+  }
+  25% {
+    border-top-color: red;
+    border-right-color: green;
+    border-bottom-color: yellow;
+    border-left-color: blue;
+  }
+  50% {
+    border-top-color: blue;
+    border-right-color: red;
+    border-bottom-color: green;
+    border-left-color: yellow;
+  }
+  75% {
+    border-top-color: yellow;
+    border-right-color: blue;
+    border-bottom-color: red;
+    border-left-color: green;
+  }
+  100% {
+    border-top-color: green;
+    border-right-color: yellow;
+    border-bottom-color: blue;
+    border-left-color: red;
+  }
+
+}
+
+.cursor {
+  cursor: pointer;
 }
 
 
 .left-sidebar {
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 10px;
+  top: 20px;
 }
 
 .leftbar {
@@ -55,8 +103,8 @@ h2{
 
 .right-sidebar {
   position: fixed;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 20px;
 }
 
 .right-sidebar > * + * {
@@ -143,7 +191,8 @@ select {
   color: red;
   width: 100%;
   min-height: 50px;
-
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .textbox-for-review::placeholder {
