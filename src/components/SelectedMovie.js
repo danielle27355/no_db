@@ -4,9 +4,6 @@ import animated from './animated.gif'
 class SelectedMovie extends Component {
     constructor(props){
         super(props)
-        this.state = {
-
-        }
     }
 
     render(){

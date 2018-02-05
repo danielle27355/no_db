@@ -15,7 +15,7 @@ class ReviewAndUpdate extends Component {
             <div className='movie-displayer'>
             <h2>Write Review</h2>
             <textarea className='textbox-for-review' onChange={(e) => this.setState({newReview: e.target.value})} value={this.state.newReview} placeholder='Write or update your reviews'></textarea>
-            <button onClick={() => {
+            <button className='btn input-periphs' onClick={() => {
                 this.props.addAndUpdate(this.state.newReview)
                 
                     this.setState({newReview: ''})

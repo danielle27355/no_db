@@ -8,7 +8,7 @@ import MovieReviews from './components/MovieReviews';
 import SelectedMovie from './components/SelectedMovie';
 import GenreFilter from './components/GenreFilter';
 import ReviewAndUpdate from './components/ReviewAndUpdate'
-
+import ShouldIWatch from './components/ShouldIWatch'
 
 class App extends Component {
   constructor(props){
@@ -22,6 +22,8 @@ class App extends Component {
         myMovieOverView: '',
         review: '',
         watchList: '',
+        yearsLessThan: '2018',
+        yearsGreaterThan: '1900'
     }
     this.changeHandler = this.changeHandler.bind(this);
     // this.getReview = this.getReview.bind(this);
@@ -30,12 +32,14 @@ class App extends Component {
     this.prevPage = this.prevPage.bind(this);
     this.addToWatchList = this.addToWatchList.bind(this);
     this.removeItem = this.removeItem.bind(this);
-    this.writeReview = this.writeReview.bind(this)
+    this.writeReview = this.writeReview.bind(this);
+    this.getMovieStartYear = this.getMovieStartYear.bind(this);
+    this.getMovieEndYear = this.getMovieEndYear.bind(this);
 } 
   componentDidMount(){
     var num = this.state.page;
-    var initalDisplayURL = `https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}`;
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}`).then(response => {  
+    var initalDisplayURL = `https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`;
+    axios.get(initalDisplayURL).then(response => {  
     this.setState({
             movieData: response.data.results,
             page: this.state.page + 1
@@ -81,15 +85,29 @@ class App extends Component {
           page: 1
       })
     }
+    getMovieStartYear(greaterThan){
+        this.setState({
+            yearsGreaterThan: greaterThan,
+        })
+        console.log(this.state.yearsGreaterThan);
+    }
+
+    getMovieEndYear(lessThan){
+        this.setState({
+            yearsLessThan: lessThan,
+        })
+        console.log(this.state.yearsLessThan)
+    }
 
     goButton(){
       this.setState({
           page:1
       })
        var num = this.state.page;
-       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}`).then(response => {
+       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
        this.setState({
-               movieData: response.data.results
+               movieData: response.data.results,
+               page: this.state.page + 1,
            })
        })
    }
@@ -98,27 +116,27 @@ class App extends Component {
        
        console.log(this.state.page)
        var num = this.state.page;
-       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}`).then(response => {
+       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
            this.setState({
                movieData: response.data.results,
+               page: num + 1
            })
        
        })
-       this.setState({
-        page: this.state.page + 1
-        })   
+        
    }
 
    prevPage(){
+    var num = this.state.page;
     if(this.state.page > 0){this.setState({
         page: this.state.page - 1
     })
     console.log(this.state.page)
-    var num = this.state.page;
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}`).then(response => {
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=2cb1a152db8ebb725faecd0edc957f33&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${num}&with_genres=${this.state.id}&release_date.gte=${this.state.yearsGreaterThan}&release_date.lte=${this.state.yearsLessThan}`).then(response => {
         
         this.setState({
             movieData: response.data.results,
+            page: num - 1,
         })
     
     })}   
@@ -200,7 +218,7 @@ class App extends Component {
       <div className='app-container'>
         <div>
             <Header />
-            <MovieDisplay movieInfo={this.state.movieData} movieSelector={this.changeHandler}/>
+            <MovieDisplay movieInfo={this.state.movieData} movieSelector={this.changeHandler} addMovie={this.addToWatchList}/>
             <div className='right-sidebar'>
               <MovieReviews myReview={this.state.review} edit={this.updateReview} myMovie={this.state.mySelectedMovie} />
               <ReviewAndUpdate addAndUpdate={this.writeReview} myReview={this.state.review}/>
@@ -210,13 +228,14 @@ class App extends Component {
                 </div>
             </div>
             <div className='left-sidebar'>
-              <SelectedMovie myMovie={this.state.mySelectedMovie} myPoster={this.state.myPosterPath} addMovie={this.addToWatchList}/>
+              {/* <SelectedMovie myMovie={this.state.mySelectedMovie} myPoster={this.state.myPosterPath} addMovie={this.addToWatchList}/> */}
               <div className='filter-menu movie-displayer'>
-                  <GenreFilter gettingGenre={this.getMovieByGenre}/>
+                  <GenreFilter gettingGenre={this.getMovieByGenre} startYear={this.getMovieStartYear} endYear={this.getMovieEndYear}/>
                   <button className='btn go input-periphs' onClick={() => this.goButton()}>Go</button>
                   <button className='btn next input-periphs' onClick={() => this.nextPage()}>Next Page</button>
                   <button className='btn next input-periphs' onClick={() => this.prevPage()}>Previouse Page</button>
               </div>
+              <ShouldIWatch />
             </div>
           </div> 
       </div>

@@ -18,8 +18,8 @@ class MovieReviews extends Component {
                 <div className='reviewBox'>
                     <div>
                         <h2>My Reviews:</h2>
-                        <h3 className='reviewed'>{this.props.myMovie}</h3>
-                        <p>{this.props.myReview}</p>
+                        <h3 className='reviewed-title'>{this.props.myMovie}</h3>
+                        <p className='review'>{this.props.myReview}</p>
                         
                     </div>
                 </div>

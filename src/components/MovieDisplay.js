@@ -6,27 +6,20 @@ import MovieReviews from './MovieReviews';
 class MovieDisplay extends Component {
     constructor(props){
         super(props)
-        this.state = {
-            movieData: '',
-            id: '',
-            page: 1,
-            mySelectedMovie: '',
-            myPosterPath: '',
-            myMovieOverView: '',
-            review: ''
-        }
+    
         
     } 
 
     render(){
 
-        var movie_titles = this.props.movieInfo ? this.props.movieInfo.map(movie => {
+        var movie_titles = this.props.movieInfo ? this.props.movieInfo.map((movie,i) => {
             
             return(
-                <ul onClick={() => this.props.movieSelector(movie.title, movie.poster_path, movie.overview)} className="movie-displayer cursor">
+                <ul key={i} onClick={() => this.props.movieSelector(movie.title, movie.poster_path, movie.overview)} className="movie-displayer cursor">
                     <li className='movieTitle'><h2>{movie.title}</h2></li>
                     <img className='poster' src={'https://image.tmdb.org/t/p/w300' + movie.poster_path} alt="none"/>
                     <li className='movieSummary'>{movie.overview}</li>
+                    <button className='getReviewButton input-periphs watchlistAdd' onClick={() => this.props.addMovie(movie.title)}>Add to Watchlist</button>
                 </ul>
 
             )

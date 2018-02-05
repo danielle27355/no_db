@@ -7,9 +7,6 @@ class WatchList extends Component {
         this.state = {
             watchList: ''
         }
-
-        this.addToWatchList = this.addToWatchList.bind(this);
-        this.removeItem = this.removeItem.bind(this);
     }
 
 
@@ -22,32 +19,11 @@ class WatchList extends Component {
         })
     }
 
-    addToWatchList(movie){
-        axios.post(`http://localhost:4000/api/watchList`, { title: movie}).then(response => {
-              this.setState({
-                watchList: response.data
-              })
-          
-        })
-        
-          
-      }
-  
-      removeItem(movie){
-        axios.delete(`http://localhost:4000/api/watchList?name=${movie}`).then(response => {
-            this.setState({
-                watchList: response.data
-            })
-            
-        })
-  
-      }
-
         render(){
 
-            var watchList = this.state.watchList ? this.state.watchList.map(movie => {
+            var watchList = this.state.watchList ? this.state.watchList.map((movie, i) => {
                 return (
-                    <ul>
+                    <ul className='fromRight' key={i}>
                         <li>{movie.title}</li>
                         <button onClick={() => this.props.deleted(movie.title)}>Delete</button>
                     </ul>

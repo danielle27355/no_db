@@ -11,11 +11,49 @@ body{
   text-align: center;
 }
 
+
+
+.pageTitle {
+  padding: 10px;
+  margin: 10px 0px;
+  background: red;
+  height: 70px;
+  overflow: hidden;
+  border: 3px white solid;
+  border-radius: 5px;
+}
+
 h1 {
   color: white;
   font-size: 44px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-shadow: 2px 2px 8px black;
+  white-space: nowrap;
+  
+}
+
+.pageTitle div:nth-child(3){
+  position: relative;
+  right: -714px;
+  top: -44px;
+}
+
+.banner {
+  margin: 0px 40px;
+  display: inline-block;
+  white-space: nowrap;
+  animation: banner 3s infinite forwards linear;
+  border:
+}
+
+@keyframes banner {
+
+  0%{
+    transform: translate(0px, 0px);
+  }
+  100%{
+    transform: translate(-476px, 0px);
+  }
 }
 
 h2{
@@ -46,9 +84,30 @@ h2{
   
 
 }
+
+.watchList ul {
+    
+animation: fromright .5s 1 ease-out forwards;
+}
+@keyframes fromright{
+
+  0%{
+    transform: translate(-300px, 0px)
+  }
+  100%{
+    transform: translate(0px, 0px)
+  }
+
+}
+
+
 .movie-displayer:hover {
   animation: bordercolor infinite 1s forwards linear;
-  box-shadow: 0px 0px 10px white;
+  box-shadow: 0px 0px 15px white;
+}
+
+.watchlistAdd {
+  cursor: url('./plus.svg'),auto;
 }
 
 @keyframes bordercolor {
@@ -95,6 +154,10 @@ h2{
   position: fixed;
   left: 10px;
   top: 20px;
+}
+
+.left-sidebar > * + * {
+  margin: 20px 0px;
 }
 
 .leftbar {
@@ -146,9 +209,17 @@ h2{
   margin-top: 20px;
 }
 
+.filter-styles p:nth-child(2) {
+  margin-top: 20px;
+}
+
 .input-periphs {
   border: white 3px solid;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 2px 2px 15px white;
+}
+
+.input-periphs:active {
+  box-shadow:none;
 }
 
 select {
@@ -237,18 +308,56 @@ select {
   box-shadow: 5px 5px 10px black;
 }
 
-.reviewed {
-  font-size: 24px;
+.reviewed-title {
+  border: white solid 3px;
+  background: red;
+  font-size: 27px;
   margin-bottom: 5px;
-  color: gainsboro;
-  text-shadow: 2px 2px 5px black;
+  padding: 5px;
+  color: white;
+  text-shadow: 1px 1px 4px black;
 } 
 
-
+.review {
+  margin: 25px 0px;
+  font-size: 18px;
+}
 
 
 .movie-displayer img {
   width: 100%;
 }
 
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10px 0px;
+  height: 10px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+  background: red;
+}
 
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  background: white;
+  height: 15px;
+  width: 15px;
+  
+
+}
+
+
+
+.weatherTile img {
+  width: 100px;
+}
+
+.temp {
+  font-size: 40px;
+}

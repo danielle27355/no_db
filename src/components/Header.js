@@ -3,8 +3,16 @@ import React from 'react';
 const Header = () => {
 
     return(
-        <div>
-            <h1 className='pageTitle'>Show Me Your Movies!</h1>
+        <div className='pageTitle'>
+            <div className='banner'>
+                <h1 >Show Me Dem Movies!</h1>
+            </div>
+            <div className='banner'>
+                <h1 >Show Me Dem Movies!</h1>
+            </div>
+            <div className='banner'>
+                <h1 >Show Me Dem Movies!</h1>
+            </div>
         </div>
         )
 }
